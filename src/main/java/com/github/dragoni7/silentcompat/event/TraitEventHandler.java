@@ -135,7 +135,8 @@ public class TraitEventHandler {
 
 				if (purifyingCount == 4 && random.nextFloat() < 0.15F) {
 					// remove all harmful effects from the entity
-					for (MobEffectInstance effect : attacked.getActiveEffects()) {
+					List<MobEffectInstance> effects = new ArrayList<>(attacked.getActiveEffects());
+					for (MobEffectInstance effect : effects) { 
 						if (effect.getEffect().getCategory() == MobEffectCategory.HARMFUL) {
 							attacked.removeEffect(effect.getEffect());
 						}
